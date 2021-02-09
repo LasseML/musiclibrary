@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Totally not an iTunes ripoff!</title>
+</head>
+
+<body>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Super Cool Music Place!</a>
+        <form class="d-flex" th:action="@{/search}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:name="query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div th:if= "${searchQuery != ''}">
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm">
+                <h3 th:text="'You searched for: ' + ${searchQuery}"></h3>
+                <div class="card" style="width: 18rem;" th:each="result:${searchResults}">
+                        <div class="card-header" th:text="'Track: ' +${result.getTrackName()}">
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item " th:text="'Album: ' +${result.getAlbumName()}"></li>
+                            <li class="list-group-item " th:text="'Artist: ' +${result.getArtistName()}"></li>
+                            <li class="list-group-item " th:text="'Genre: ' +${result.getGenre()}"></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:if= "${searchQuery == ''}">
+    Please search for something
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
