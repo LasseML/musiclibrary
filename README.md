@@ -2,11 +2,11 @@
 
 This project has been an exercise in working with REST apis in Spring Boot.
 
-Heroku link: REMEMBER TO PASTE THIS!
+Heroku link: https://lml-musiclib-api-sqlite.herokuapp.com/
 
 
 The project presents multiple endpoints:
-A postman collection can be found in the postman folder, in root.
+A postman collection, for localhost and Heroku, can be found in the postman folder, in root.
 
 /api/customers :  returns all the customers in the database, with customer id, first and last name, country, 
 zipcode, phone and email.
